@@ -19,6 +19,7 @@ func main() {
 	server.GET("/real-estates", getAllRealEstates)
 	server.POST("/real-estates", controllers.SaveRealEstate)
 	server.POST("/user/signup", controllers.Signup)
+	server.POST("/login", controllers.Login)
 
 	err := server.Run()
 	if err != nil {
