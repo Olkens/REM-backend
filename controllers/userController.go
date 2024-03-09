@@ -55,6 +55,13 @@ func Signup(c *gin.Context) {
 	}
 
 	result := initializers.DB.Create(&user)
+
+	if result.Error != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "Użytkownik z podanym e-mailem już istnieje!",
+		})
+	}
+
 	c.JSON(http.StatusOK, gin.H{
 		"message":    "Pomyślnie utworzono użytkownika",
 		"Użytkownik": result,
